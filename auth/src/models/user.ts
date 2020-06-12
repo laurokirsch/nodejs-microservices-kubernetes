@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { Password } from '../utils/password';
 
 // props required to create a new user
 interface UserAttrs {
@@ -26,6 +27,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+});
+userSchema.pre('save', async function (done) {
+  if (this.isModified('password')) {
+    const hashed = await Password.toHash(this.get('password'));
+    this.set('password', hashed);
+  }
+  done();
 });
 // `UserAttrs` interface serves the purpose of type-checking without being an `User` type
 // this adds static props to the `User` model
