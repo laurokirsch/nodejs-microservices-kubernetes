@@ -3,8 +3,8 @@ import { Password } from '../utils/password';
 
 // props required to create a new user
 interface UserAttrs {
-  email: String;
-  password: String;
+  email: string;
+  password: string;
 }
 
 // describes the `User` model
@@ -14,8 +14,8 @@ interface UserModel extends mongoose.Model<UserDoc> {
 }
 
 interface UserDoc extends mongoose.Document {
-  email: String;
-  password: String;
+  email: string;
+  password: string;
 }
 
 const userSchema = new mongoose.Schema(
