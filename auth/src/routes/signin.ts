@@ -3,8 +3,7 @@ import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
 
 import { User } from '../models/user';
-import { validateRequest } from '../middlewares/validate-request';
-import { BadRequestError } from './../errors/bad-request-error';
+import { validateRequest, BadRequestError } from '@lkticketing/common';
 import { Password } from '../utils/password';
 
 const router = Router();
